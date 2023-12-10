@@ -15,7 +15,9 @@ function Article(props) {
       return;
     }
 
-    fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+    fetch(
+      `https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/users/canBookmark/${user.token}`
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.result && data.canBookmark) {

@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     fetch(
-      "https://globalnewsnexus-backend-git-main-niamordev.vercel.app/articles"
+      "https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/articles"
     )
       .then((response) => response.json())
       .then((data) => {

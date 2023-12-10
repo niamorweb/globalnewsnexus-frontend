@@ -27,7 +27,7 @@ function Connexion({ setIsPopupConnexionVisible }) {
 
   const handleRegister = () => {
     fetch(
-      "https://globalnewsnexus-backend-git-main-niamordev.vercel.app/users/signup",
+      "https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/users/signup",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -50,7 +50,7 @@ function Connexion({ setIsPopupConnexionVisible }) {
 
   const handleConnection = () => {
     fetch(
-      "https://globalnewsnexus-backend-git-main-niamordev.vercel.app/users/signin",
+      "https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/users/signin",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
