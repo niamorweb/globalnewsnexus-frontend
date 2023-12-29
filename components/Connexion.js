@@ -26,17 +26,14 @@ function Connexion({ setIsPopupConnexionVisible }) {
   const [signInPassword, setSignInPassword] = useState("");
 
   const handleRegister = () => {
-    fetch(
-      "https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/users/signup",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: signUpUsername,
-          password: signUpPassword,
-        }),
-      }
-    )
+    fetch("https://globalnewsnexus-backend.vercel.app/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: signUpUsername,
+        password: signUpPassword,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
@@ -49,17 +46,14 @@ function Connexion({ setIsPopupConnexionVisible }) {
   };
 
   const handleConnection = () => {
-    fetch(
-      "https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/users/signin",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: signInUsername,
-          password: signInPassword,
-        }),
-      }
-    )
+    fetch("https://globalnewsnexus-backend.vercel.app/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: signInUsername,
+        password: signInPassword,
+      }),
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {

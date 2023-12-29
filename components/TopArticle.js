@@ -16,7 +16,7 @@ function TopArticle(props) {
     }
 
     fetch(
-      `https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/users/canBookmark/${user.token}`
+      `https://globalnewsnexus-backend.vercel.app/users/canBookmark/${user.token}`
     )
       .then((response) => response.json())
       .then((data) => {

@@ -12,9 +12,7 @@ function Home() {
   const [topArticle, setTopArticle] = useState({});
 
   useEffect(() => {
-    fetch(
-      "https://globalnewsnexus-backend-b5remo86m-niamordev.vercel.app/articles"
-    )
+    fetch("https://globalnewsnexus-backend.vercel.app/articles")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
