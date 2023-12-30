@@ -15,8 +15,8 @@ function Home() {
     fetch("https://globalnewsnexus-backend.vercel.app/articles")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTopArticle(data.articles[0]);
+        console.log(topArticle);
         setArticlesData(data.articles.filter((data, i) => i > 0));
       });
   }, []);

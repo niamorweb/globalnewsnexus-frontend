@@ -6,12 +6,18 @@ import styles from "../styles/TopArticle.module.css";
 import { useEffect, useState } from "react";
 
 function TopArticle(props) {
+  const [popupNotLogin, setPopupNotLogin] = useState(false);
+  const [popupAddedToBookmark, setPopupAddedToBookmark] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const [description, setDescription] = useState("");
 
   const handleBookmarkClick = () => {
     if (!user.token) {
+      setPopupNotLogin(true);
+      setTimeout(() => {
+        setPopupNotLogin(false);
+      }, 2000);
       return;
     }
 
@@ -22,8 +28,16 @@ function TopArticle(props) {
       .then((data) => {
         if (data.result && data.canBookmark) {
           if (props.isBookmarked) {
+            setPopupAddedToBookmark("Article removed from bookmarks");
+            setTimeout(() => {
+              setPopupAddedToBookmark(null);
+            }, 2000);
             dispatch(removeBookmark(props));
           } else {
+            setPopupAddedToBookmark("Article added to bookmarks");
+            setTimeout(() => {
+              setPopupAddedToBookmark(null);
+            }, 2000);
             dispatch(addBookmark(props));
           }
         }
@@ -92,6 +106,18 @@ function TopArticle(props) {
       <div className="hidden lg:flex w-[30%] p-4">
         {description && <span>{description}</span>}
       </div>
+
+      {popupNotLogin && (
+        <div className="bg-red-400 text-white1 font-semibold px-8 py-3 rounded-md fixed top-6 right-4">
+          You need to be connected
+        </div>
+      )}
+
+      {popupAddedToBookmark && (
+        <div className="bg-green-600 text-white1 font-semibold px-8 py-3 rounded-md fixed top-6 right-4">
+          {popupAddedToBookmark}
+        </div>
+      )}
     </div>
   );
 }

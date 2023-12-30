@@ -5,6 +5,7 @@ import styles from "../styles/Bookmarks.module.css";
 
 function Bookmarks() {
   const bookmarks = useSelector((state) => state.bookmarks.value);
+  const user = useSelector((state) => state.user.value);
 
   let articles = <p>No article</p>;
   if (bookmarks.length > 0) {
@@ -21,7 +22,7 @@ function Bookmarks() {
       <div className="flex flex-col gap-5 lg:mt-10">
         <span className="text-black1 font-black lg:text-2xl">My bookmarks</span>
         <div className="grid grid-cols-2 gap-x-3 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
-          {articles}
+          {user.token ? articles : <span>You need to be connected</span>}
         </div>
       </div>
     </div>

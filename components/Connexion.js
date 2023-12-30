@@ -79,8 +79,8 @@ function Connexion({ setIsPopupConnexionVisible }) {
             onClick={() => setModalVisible("signin")}
             className={
               modalVisible === "signin"
-                ? "py-2 px-4 rounded-md font-semibold bg-dark1 text-white1"
-                : "py-2 px-4 rounded-md font-semibold border-2 border-dark1 text-dark1 bg-transparent"
+                ? "cursor-pointer py-2 px-4 rounded-md font-semibold bg-dark1 text-white1"
+                : "cursor-pointer py-2 px-4 rounded-md font-semibold border-2 border-dark1 text-dark1 bg-transparent"
             }
           >
             Sign in
@@ -89,8 +89,8 @@ function Connexion({ setIsPopupConnexionVisible }) {
             onClick={() => setModalVisible("signup")}
             className={
               modalVisible === "signup"
-                ? "py-2 px-4 rounded-md font-semibold bg-dark1 text-white1"
-                : "py-2 px-4 rounded-md font-semibold border-2 border-dark1 text-dark1 bg-transparent"
+                ? "cursor-pointer py-2 px-4 rounded-md font-semibold bg-dark1 text-white1"
+                : "cursor-pointer py-2 px-4 rounded-md font-semibold border-2 border-dark1 text-dark1 bg-transparent"
             }
           >
             Sign Up

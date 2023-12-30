@@ -5,13 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import styles from "../styles/Article.module.css";
+import { useState } from "react";
 
 function Article(props) {
+  const [popupNotLogin, setPopupNotLogin] = useState(false);
+  const [popupAddedToBookmark, setPopupAddedToBookmark] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
 
   const handleBookmarkClick = () => {
     if (!user.token) {
+      setPopupNotLogin(true);
+      setTimeout(() => {
+        setPopupNotLogin(false);
+      }, 2000);
       return;
     }
 
@@ -22,8 +29,16 @@ function Article(props) {
       .then((data) => {
         if (data.result && data.canBookmark) {
           if (props.isBookmarked) {
+            setPopupAddedToBookmark("Article removed from bookmarks");
+            setTimeout(() => {
+              setPopupAddedToBookmark(null);
+            }, 2000);
             dispatch(removeBookmark(props));
           } else {
+            setPopupAddedToBookmark("Article added to bookmarks");
+            setTimeout(() => {
+              setPopupAddedToBookmark(null);
+            }, 2000);
             dispatch(addBookmark(props));
           }
         }
@@ -77,6 +92,24 @@ function Article(props) {
         {calculateOffsetDate(props.publishedAt)} ·
         {props.source && props.source.name && props.source.name}
       </span>
+      <a
+        target="_blank"
+        className="underline underline-offset-2 text-sm"
+        href={props.url}
+      >
+        View article
+      </a>
+      {popupNotLogin && (
+        <div className="bg-red-400 text-white1 font-semibold px-8 py-3 rounded-md fixed top-6 right-4">
+          You need to be connected
+        </div>
+      )}
+
+      {popupAddedToBookmark && (
+        <div className="bg-green-600 text-white1 font-semibold px-8 py-3 rounded-md fixed top-6 right-4">
+          {popupAddedToBookmark}
+        </div>
+      )}
     </div>
   );
 }
